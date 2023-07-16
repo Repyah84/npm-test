@@ -1,0 +1,19 @@
+<ngn-button-toggle
+  [value]="toggleValueList[1]"
+  #buttonToggle="ngnButtonToggle"
+  (buttonToggleValueChange)="btnToggleValue = $event"
+>
+  <ng-container *ngFor="let toggle of toggleValueList">
+    <ng-template ngnToggle [ngnToggleValue]="toggle" let-isToggle="isToggle">
+      <button [class.btn-toggle--toggled]="isToggle" class="btn-toggle">
+        {{ toggle.value }}
+      </button>
+    </ng-template>
+  </ng-container>
+</ngn-button-toggle>
+
+<div>{{ buttonToggle.value?.value }}</div>
+
+<div>
+  <span>button toggle change: {{ (btnToggleValue | json) || 'no event' }}</span>
+</div>
